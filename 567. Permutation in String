@@ -1,0 +1,25 @@
+//Hash MAP + Sliding Window
+
+
+from collections import Counter
+class Solution(object):
+    def checkInclusion(self, s1, s2):
+        n = len(s1)
+        m = len(s2)
+        if n > m:
+            return False
+        count = Counter(s1)
+        per_win = Counter(s2[:len(s1)])
+        if count == per_win:
+            return True
+        l=0
+        for r in range(n,m):
+            per_win[s2[r]] +=1
+            per_win[s2[l]] -=1
+            if per_win[s2[l]] == 0:
+                del per_win[s2[l]]
+            l+=1
+            if count == per_win:
+                return True
+        return False
+            
