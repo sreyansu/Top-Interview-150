@@ -1,0 +1,23 @@
+class Solution(object):
+    def reorderList(self, head):
+        if not head:
+            return
+        #Find the Mid
+        slow = fast = head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+        #Reverse the 2nd part
+        prev = None
+        curr = slow
+        while curr:
+            curr.next, prev, curr = prev, curr, curr.next
+
+        #merge two lists
+        first = head
+        second = prev
+        while second.next:
+            first.next, first = second, first.next
+            second.next, second = first, second.next
+
+        
