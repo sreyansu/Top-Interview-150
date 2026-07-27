@@ -1,0 +1,16 @@
+from random import choice
+class Solution:
+    def findKthLargest(self, a, k):
+        p, l, m, r = choice(a), [], [], []
+        for v in a:
+            if v > p:
+                l.append(v)
+            elif v < p:
+                r.append(v)
+            else:
+                m.append(v)
+        if k <= len(l):
+            return self.findKthLargest(l, k)
+        if len(l) + len(m) < k:
+            return self.findKthLargest(r, k - len(l) - len(m))
+        return p
