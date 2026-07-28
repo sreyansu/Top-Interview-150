@@ -1,10 +1,13 @@
 class Solution(object):
-    def strStr(self, haystack, needle):
-        n = len(haystack)
-        m = len(needle)
-        if m == 0:
-            return 0
-        for i in range(n - m + 1):
-            if haystack[i:i + m] == needle:
-                return i
-        return -1
+    def findMin(self, nums):
+        left = 0
+        right = len(nums)-1
+        while left < right:
+                mid = left + (right-left) // 2
+                if nums[mid] > nums[right]:
+                    left = mid+1
+                else:
+                    right = mid
+        return nums[left]
+
+                
