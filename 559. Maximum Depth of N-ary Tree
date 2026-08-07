@@ -9,8 +9,8 @@ class Node(object):
 class Solution(object):
     def maxDepth(self, root):
         if not root:
-            return
+            return 0
         depth = 0
         for i in root.children:
             depth = max(depth,self.maxDepth(i))
-        return depth+1
+        return 1+depth
