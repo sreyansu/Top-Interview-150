@@ -1,0 +1,20 @@
+class Solution(object):
+    def getSneakyNumbers(self, nums):
+        freq = {}
+        for ch in nums:
+            freq[ch] = freq.get(ch,0)+1
+        return [num for num,count in freq.items() if count > 1]
+
+-----------------------------------------------------------------------------------------------------
+
+class Solution(object):
+    def getSneakyNumbers(self, nums):
+        seen = set()
+        extra = []
+        for i in nums:
+            if i not in seen:
+                seen.add(i)
+            else:
+                extra.append(i)
+        return extra
+        
