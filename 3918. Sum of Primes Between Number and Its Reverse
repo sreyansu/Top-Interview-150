@@ -1,0 +1,23 @@
+class Solution(object):
+    def sumOfPrimesInRange(self, n):
+        x = n
+        r = 0
+        while x>0:
+            digit = x%10
+            r = r*10+digit
+            x//=10
+        rev=r
+        sum_fun = 0
+        for num in range(min(n,rev),max(n,rev)+1):
+            if num < 2:
+                continue
+            prime = True
+            for i in range(2, int(num ** 0.5) + 1):
+                if num % i == 0:
+                    prime = False
+                    break
+            if prime:
+                sum_fun += num
+        return sum_fun
+
+        
