@@ -1,0 +1,15 @@
+class Solution(object):
+    def lcs(self,a,b):
+        x = len(a)
+        y = len(b)
+        dp = [[0]*(y+1) for _ in range(x+1)]
+        for i in range(x-1,-1,-1):
+            for j in range(y-1,-1,-1):
+                if a[i] == b[j]:
+                    dp[i][j] = 1+ dp[i+1][j+1]
+                else:
+                    dp[i][j] = max(dp[i+1][j],dp[i][j+1])
+        return dp[0][0]
+    def longestPalindromeSubseq(self, s):
+        t = s[::-1]
+        return self.lcs(s,t)
