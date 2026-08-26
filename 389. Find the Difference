@@ -1,0 +1,8 @@
+from collections import Counter
+
+class Solution(object):
+    def findTheDifference(self, s, t):
+        freq_1 = Counter(s)
+        freq_2 = Counter(t)
+        diff = freq_2 - freq_1
+        return list(diff.keys())[0]
