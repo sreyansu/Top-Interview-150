@@ -1,0 +1,16 @@
+class Solution(object):
+    def maxProduct(self,nums):
+        if not nums:
+            return 0
+        global_max = nums[0]
+        curr_max = nums[0]
+        curr_min = nums[0]
+        for i in range(1, len(nums)):
+            val = nums[i]
+            if val < 0:
+                curr_max, curr_min = curr_min, curr_max
+            curr_max = max(val, curr_max * val)
+            curr_min = min(val, curr_min * val)
+            global_max = max(global_max, curr_max)
+        return global_max
+
