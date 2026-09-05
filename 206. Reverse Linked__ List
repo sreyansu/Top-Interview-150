@@ -1,0 +1,12 @@
+class Solution(object):
+    def reverseList(self, head):
+        previous = None
+        Current = head
+        while Current:
+            temp = Current.next
+            Current.next = previous
+            previous = Current
+            Current = temp
+        return previous
+
+        
