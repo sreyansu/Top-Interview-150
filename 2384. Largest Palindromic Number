@@ -1,0 +1,25 @@
+class Solution(object):
+    def largestPalindromic(self, num):
+        freq = {}
+        for ch in num:
+            freq[ch] = freq.get(ch, 0) + 1
+        left = []
+        for digit in range(9, -1, -1):
+            d = str(digit)
+            pairs = freq.get(d, 0) // 2
+            if pairs == 0:
+                continue
+            if d == "0" and not left:
+                continue
+            left.append(d * pairs)
+            freq[d] -= 2 * pairs
+        left = "".join(left)
+        middle = ""
+        for digit in range(9, -1, -1):
+            d = str(digit)
+            if freq.get(d, 0) > 0:
+                middle = d
+                break
+        if not left:
+            return middle if middle else "0"
+        return left + middle + left[::-1]
